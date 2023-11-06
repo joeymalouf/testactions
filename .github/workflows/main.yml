@@ -1,20 +1,11 @@
-name: 'testaction'
 
-permissions:
-  contents: write
-  checks: read
-  id-token: write
 
-on:
-  push:
-  workflow_dispatch:
-    inputs:
-      release-version:
-        type: string
-        description: release version
-        required: true
-
-    jobs:
-      release:
-        if: (github.ref_name == 'master' || startsWith(github.ref_name, 'release/') == true)
-          - run: echo "works"
+name: hello-world
+on: push
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    if: (github.ref_name == 'master' || startsWith(github.ref_name, 'release/') == true)
+    steps:
+      - name: my-step
+        run: echo "Hello World!"
