@@ -17,4 +17,4 @@ on:
     jobs:
       release:
         if: (github.ref_name == 'master' || startsWith(github.ref_name, 'release/') == true)
-          echo: "works"
+          run: echo "works"
