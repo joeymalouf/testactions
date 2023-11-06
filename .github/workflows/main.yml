@@ -1,0 +1,20 @@
+name: 'testaction'
+
+permissions:
+  contents: write
+  checks: read
+  id-token: write
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      release-version:
+        type:string
+        description: release version
+        required: true
+
+    jobs:
+      release:
+        if: (github.ref_name == 'master' || startsWith(github.ref_name, 'release/') == true)
+          echo: 'works'
